@@ -38,6 +38,15 @@ const HorizontalCards = ({ data }) => {
   return (
     <div className="w-full p-5">
       <h1 className="text-3xl font-semibold text-zinc-200 mb-5">Trending</h1>
+
+      <div className="select">
+        <select defaultValue={0} name="format" id="format">
+            <option value="0" disabled>
+                Disabled option
+            </option>
+        </select>
+      </div>
+
       <Slider {...settings}>
         {data.map((d, i) => (
           <div key={i} className="px-2">
