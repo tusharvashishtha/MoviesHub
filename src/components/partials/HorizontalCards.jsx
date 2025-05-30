@@ -1,5 +1,6 @@
 import React from "react";
 import Slider from "react-slick";
+import Dropdown from "./Dropdown";
 
 const HorizontalCards = ({ data }) => {
   var settings = {
@@ -36,18 +37,8 @@ const HorizontalCards = ({ data }) => {
   };
 
   return (
-    <div className="w-full p-5">
-      <h1 className="text-3xl font-semibold text-zinc-200 mb-5">Trending</h1>
-
-      <div className="select">
-        <select defaultValue={0} name="format" id="format">
-            <option value="0" disabled>
-                Disabled option
-            </option>
-        </select>
-      </div>
-
-      <Slider {...settings}>
+      
+      <Slider {...settings} className="">
         {data.map((d, i) => (
           <div key={i} className="px-2">
             <div className="bg-zinc-900 rounded overflow-hidden shadow-lg h-[350px] flex flex-col">
@@ -69,7 +60,7 @@ const HorizontalCards = ({ data }) => {
           </div>
         ))}
       </Slider>
-    </div>
+
   );
 };
 
