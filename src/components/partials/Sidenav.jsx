@@ -5,7 +5,7 @@ const Sidenav = () => {
 
   return (
     <div className="w-[20%] h-full border-r-2 border-zinc-400 p-10">
-        <h1 className='text-2xl text-white font-bold'>
+        <h1 className='text-xl text-white font-bold'>
             <i className="ri-tv-fill text-[#6556CD] text-2xl mr-3"></i>
             <span className='text-xl'>MoviesHub</span>
         </h1>
