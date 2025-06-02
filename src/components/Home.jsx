@@ -10,7 +10,7 @@ import Loading from './Loading'
 const Home = () => {
     document.title = 'Home'
     const [wallpaper, setWallpaper] = useState(null);
-    const [trending, setTreding] = useState(null);
+    const [trending, setTrending] = useState(null);
     const [category, setcategory] = useState("all")
 
     const getHeaderWallpaper = async() =>{
@@ -26,7 +26,7 @@ const Home = () => {
     const GetTrending = async() =>{
       try {
         const {data} = await axios.get(`/trending/${category}/day`);
-        setTreding(data.results)
+        setTrending(data.results)
 
       } catch (error) {
         console.log(error)
