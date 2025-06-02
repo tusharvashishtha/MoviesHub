@@ -5,30 +5,50 @@ import Dropdown from './partials/Dropdown'
 import axios from '../utils/axios'
 import Cards from './partials/Cards'
 import Loading from './Loading'
+import InfiniteScroll from 'react-infinite-scroll-component'
+
 
 const Trending = () => {
     const navigate = useNavigate();
     const [category, setcategory] = useState("all");
     const [duration, setduration] = useState("day");
-    const [trending, settrending] = useState(null);
+    const [trending, settrending] = useState([]);
+    const [page, setpage] = useState(1);
+    const [hasMore, sethasMore] = useState(true)
 
         const GetTrending = async() =>{
           try {
-            const {data} = await axios.get(`/trending/${category}/${duration}`);
-            settrending(data.results)
+            const {data} = await axios.get(`/trending/${category}/${duration}?page=${page}`);
+            // settrending(data.results)
+            if(data.results.length > 0){
+              settrending((prev) => [...prev, ...data.results])
+              setpage((prev) => prev + 1)
+            }else{
+              sethasMore(false)
+            }
     
           } catch (error) {
             console.log(error)
           }
         }  
 
-        useEffect(() => {
+        const refreshHandler =  () => {
+          if(trending.length === 0) {
             GetTrending()
+          }else{
+            setpage(1);
+            settrending([])
+            GetTrending();
+          }
+        }
+
+        useEffect(() => {
+            refreshHandler()    
         },[category,duration])
 
-  return trending ? (
-    <div className='px-[3%] w-screen h-screen overflow-hidden overflow-y-auto'>
-        <div className=' w-full flex items-center justify-between'>
+  return trending.length > 0 ? (
+    <div className=' w-screen h-screen '>
+        <div className='px-[3%] w-full flex items-center justify-between'>
             <h1 className='w-[20%] text-xl text-zinc-400 font-semibold'>
             <i onClick={() => navigate(-1)} className=" text-zinc-400 hover:text-[#6556CD] ri-arrow-left-line"></i>
             Trending</h1>
@@ -45,7 +65,15 @@ const Trending = () => {
           
         </div>
 
+        <InfiniteScroll
+         dataLength={trending.length}
+         next={GetTrending}
+         hasMore = {hasMore}
+         loader={<h1>Loading...</h1>}
+         >
         <Cards data={trending} title = {category} />
+        </InfiniteScroll>
+
 
     </div>
   ) : <Loading />
