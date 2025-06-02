@@ -9,12 +9,13 @@ import InfiniteScroll from 'react-infinite-scroll-component'
 
 
 const Trending = () => {
-    const navigate = useNavigate();
-    const [category, setcategory] = useState("all");
-    const [duration, setduration] = useState("day");
-    const [trending, settrending] = useState([]);
-    const [page, setpage] = useState(1);
-    const [hasMore, sethasMore] = useState(true)
+  const navigate = useNavigate();
+  const [category, setcategory] = useState("all");
+  const [duration, setduration] = useState("day");
+  const [trending, settrending] = useState([]);
+  const [page, setpage] = useState(1);
+  const [hasMore, sethasMore] = useState(true)
+  document.title = "MoviesHub | Trending ";
 
         const GetTrending = async() =>{
           try {
