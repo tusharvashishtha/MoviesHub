@@ -1,25 +1,25 @@
 import { useState ,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "../../utils/axios";
+import axios from "../utils/axios";
 import InfiniteScroll from "react-infinite-scroll-component";
-import Cards from "./Cards";
-import Dropdown from "./Dropdown";
-import Topnav from "./Topnav";
-import Loading from "../Loading";
- 
-const Popular = () => {
-    const navigate = useNavigate();
-    const [category, setcategory] = useState("movie");
-    const [popular, setpopular] = useState([]);
+import Cards from "./partials/Cards";
+import Dropdown from "./partials/Dropdown";
+import Topnav from "./partials/Topnav";
+import Loading from "./Loading";
+
+const TvShows = () => {
+     const navigate = useNavigate();
+    const [category, setcategory] = useState("popular");
+    const [tv, settv] = useState([]);
     const [page, setpage] = useState(1);
     const [hasMore, sethasMore] = useState(true)
-    document.title = "MoviesHub | Popular"
+    document.title = "MoviesHub | Tv Shows"
 
-         const GetPopular = async() =>{
+         const GetTv  = async() =>{
           try {
-            const {data} = await axios.get(`${category}/popular?page=${page}`);
+            const {data} = await axios.get(`/tv/${category}?page=${page}`);
             if(data.results.length > 0){
-              setpopular((prev) => [...prev, ...data.results])
+              settv((prev) => [...prev, ...data.results])
               setpage((prev) => prev + 1)
             }else{
               sethasMore(false)
@@ -31,29 +31,28 @@ const Popular = () => {
         }  
 
         const refreshHandler =  () => {
-          if(popular.length === 0) {
-            GetPopular()
+          if(tv.length === 0) {
+            GetTv()
           }else{
             setpage(1);
-            setpopular([])
-            GetPopular();
+            settv([])
+            GetTv();
           }
         }
 
         useEffect(() => {
             refreshHandler()    
         },[category])
-          
-  return popular.length > 0 ? (
+  return tv.length > 0 ? (
     <div className=' w-screen h-screen '>
         <div className='px-[3%] w-full flex items-center justify-between'>
             <h1 className='w-[20%] text-xl text-zinc-400 font-semibold'>
             <i onClick={() => navigate(-1)} className=" text-zinc-400 hover:text-[#6556CD] ri-arrow-left-line"></i>
-            Popular</h1>
+            Movie<small className="ml-2 text-sm text-zinc-600">({category})</small></h1>
 
             <div className='flex items-center w-[75%]'>
               <Topnav />
-            <Dropdown title="Category" options={["tv", "movie"]}
+            <Dropdown title="Category" options={["popular", "top_rated","on_the_air" , "airing_today"]}
             func={(e) => setcategory(e.target.value)} />
             <div className='w-[2%]'></div>
         
@@ -63,12 +62,12 @@ const Popular = () => {
         </div>
 
         <InfiniteScroll
-         dataLength={popular.length}
-         next={GetPopular}
+         dataLength={tv.length}
+         next={GetTv}
          hasMore = {hasMore}
          loader={<h1>Loading...</h1>}
          >
-        <Cards data={popular} title = {category} />
+        <Cards data={tv} title = {category} />
         </InfiniteScroll>
 
 
@@ -76,4 +75,4 @@ const Popular = () => {
   ) : <Loading />
 }
 
-export default Popular
+export default TvShows
