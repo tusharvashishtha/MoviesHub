@@ -48,7 +48,7 @@ const TvShows = () => {
         <div className='px-[3%] w-full flex items-center justify-between'>
             <h1 className='w-[20%] text-xl text-zinc-400 font-semibold'>
             <i onClick={() => navigate(-1)} className=" text-zinc-400 hover:text-[#6556CD] ri-arrow-left-line"></i>
-            Movie<small className="ml-2 text-sm text-zinc-600">({category})</small></h1>
+            Tv Shows<small className="ml-2 text-sm text-zinc-600">({category})</small></h1>
 
             <div className='flex items-center w-[75%]'>
               <Topnav />

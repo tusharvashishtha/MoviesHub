@@ -22,7 +22,6 @@ const People = () => {
             if(data.results.length > 0){
               setperson((prev) => [...prev, ...data.results])
               setpage((prev) => prev + 1)
-              console.log(data)
             }else{
               sethasMore(false)
             }
@@ -51,7 +50,7 @@ const People = () => {
         <div className='px-[3%] w-full flex items-center justify-between'>
             <h1 className='w-[20%] text-xl text-zinc-400 font-semibold'>
             <i onClick={() => navigate(-1)} className=" text-zinc-400 hover:text-[#6556CD] ri-arrow-left-line"></i>
-            People<small className="ml-2 text-sm text-zinc-600">({category})</small></h1>
+            People</h1>
 
             <div className='flex items-center w-[75%]'>
               <Topnav />
@@ -64,7 +63,7 @@ const People = () => {
         </div>
 
         <InfiniteScroll
-         dataLength={person.length}
+         dataLength={person.length} 
          next={GetPerson}
          hasMore = {hasMore}
          loader={<h1>Loading...</h1>}
