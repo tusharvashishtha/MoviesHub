@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import noImage from "/noImage.png"
 
 const Cards = ({data , title}) => {
   return (
@@ -10,7 +11,7 @@ const Cards = ({data , title}) => {
          c.poster_path ||  c.backdrop_path || c.profile_path
         }`} alt='' />
         <h1 className='text-xl text-zinc-400 mt-3 font-semibold'>
-         { c.name ||c.original_name  || c.title ||c.original_title
+         { c.name ||c.original_name  || c.title ||c.original_title ? c.name ||c.original_name  || c.title ||c.original_title : noImage
          } 
          </h1>
 

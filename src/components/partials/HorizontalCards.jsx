@@ -1,6 +1,7 @@
 import React from "react";
 import Slider from "react-slick";
 import Dropdown from "./Dropdown";
+import noImage from "/noImage.png"
 
 const HorizontalCards = ({ data }) => {
   var settings = {
@@ -44,7 +45,7 @@ const HorizontalCards = ({ data }) => {
             <div className="bg-zinc-900 rounded overflow-hidden shadow-lg h-[350px] flex flex-col">
               <img
                 className="w-full h-[50%] object-cover"
-                src={`https://image.tmdb.org/t/p/original/${d.backdrop_path || d.poster_path}`}
+                src={d.backdrop_path || d.poster_path ? `https://image.tmdb.org/t/p/original/${d.backdrop_path || d.poster_path}` : noImage}
                 alt=""
               />
               <div className="p-4 text-white h-[50%] flex flex-col">

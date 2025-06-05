@@ -22,8 +22,8 @@ const Sidenav = () => {
         <hr className='border-none h-[1px] bg-zinc-400'/>
          <nav className='flex flex-col text-zinc-400 text-[xl] gap-3'>
            <h1 className='text-white font-semibold text-xl mt-10 mb-5'>Website Information</h1>
-           <Link className='hover:bg-[#6556CD] hover:text-white duration-400 rounded-lg p-5'><i className="ri-information-fill"></i> About</Link>
-           <Link className='hover:bg-[#6556CD] hover:text-white duration-400 rounded-lg p-5'><i className="ri-phone-fill"></i>  Contact Us</Link>
+           <Link to = "/about" className='hover:bg-[#6556CD] hover:text-white duration-400 rounded-lg p-5'><i className="ri-information-fill"></i> About</Link>
+           <Link to = "/contact" className='hover:bg-[#6556CD] hover:text-white duration-400 rounded-lg p-5'><i className="ri-phone-fill"></i> Contact Us</Link>
           
         </nav>
 
