@@ -2,7 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import Dropdown from "./Dropdown";
 import noImage from "/noImage.png"
-
+import { Link } from "react-router-dom";
 const HorizontalCards = ({ data }) => {
   var settings = {
     dots: false, 
@@ -41,7 +41,7 @@ const HorizontalCards = ({ data }) => {
       
       <Slider {...settings} className="">
         {data.map((d, i) => (
-          <div key={i} className="px-2">
+          <Link to = {`/${d.media_type}/details/${d.id}`} key={i} className="px-2">
             <div className="bg-zinc-900 rounded overflow-hidden shadow-lg h-[350px] flex flex-col">
               <img
                 className="w-full h-[50%] object-cover"
@@ -58,7 +58,7 @@ const HorizontalCards = ({ data }) => {
                 </p>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </Slider>
 

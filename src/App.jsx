@@ -8,19 +8,25 @@ import Movies from './components/Movies'
 import TvShows from './components/TvShows'
 import People from './components/People'
 import About from './components/About'
+import Moviedetails from './components/Moviedetails'
+import TvDetails from './components/TvDetails'
+import PersonDetails from './components/PersonDetails'
 
 function App() {
 
   return (
-    <div className='bg-[#1F1E24] max-w-screen h-fit flex'>
+    <div className='bg-[#1F1E24] max-w-screen h-[fit] flex'>
      <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/trending' element={<Trending/>} />
       <Route path='/trending' element={<Trending/>} />
       <Route path='/popular' element={<Popular/>} />
       <Route path='/movie' element={<Movies/>} />
+      <Route path='/movie/details/:id' element = {<Moviedetails />} />
       <Route path='/tvshows' element={<TvShows/>} />
+      <Route path='/tv/details/:id' element = {<TvDetails />}/>
       <Route path='/people' element={<People/>} />
+      <Route path='/people/details/:id' element = {<PersonDetails />} />
       <Route path='/about' element={<About />} />
       </Routes> 
     </div>
