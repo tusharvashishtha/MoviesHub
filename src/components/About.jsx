@@ -5,7 +5,7 @@ const About = () => {
      <section className="w-[100vw] min-h-screen px-6 py-16 flex items-center justify-center">
       <div className="max-w-4xl mx-auto text-center">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-zinc-400 mb-6">
-          About MoviesHub
+          <i onClick={() => navigate(-1)} className=" text-zinc-400 hover:text-[#6556CD] ri-arrow-left-line"></i> About MoviesHub
         </h1>
         <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed">
           Welcome to <span className="font-semibold text-red-600">MoviesHub</span> — your all-in-one platform for discovering, exploring, and tracking the world of movies and TV shows.
