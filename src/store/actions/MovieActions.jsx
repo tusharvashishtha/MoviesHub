@@ -16,7 +16,7 @@ export const asyncloadmovie = (id) => async (dispatch , getState) => {
             recommendations: recommendations.data.results,
             similar: similar.data.results,
             videos: videos.data.results.find(m => m.type === "Trailer"),
-            watchproviders: watchproviders.data.results.in,
+            watchproviders: watchproviders.data.results.IN,
         }
         dispatch(loadmovie(ultimateDetails))
     
