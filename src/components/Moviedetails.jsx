@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 import { asyncloadmovie, removemovie } from "../store/actions/MovieActions";
 import { Link } from "react-router-dom";
 import Loading from "../components/Loading";
+import HorizontalCards from "../components/partials/HorizontalCards"
 
 const Moviedetails = () => {
   const navigate = useNavigate();
@@ -27,9 +28,9 @@ const Moviedetails = () => {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
       }}
-      className="w-screen h-screen px-[10%] text-xl"
+      className="w-screen h-[150vh] overflow-x-hidden px-[10%] text-xl"
     >
-      {/* Navigation */}
+      {/*Part 1 Navigation */}
       <nav className="h-[10vh] w-full text-zinc-300 flex items-center gap-10 ">
         <Link
           onClick={() => navigate(-1)}
@@ -61,6 +62,7 @@ const Moviedetails = () => {
         </a>
       </nav>
 
+
       {/* Part 2 Poster and details */}
       <div className="w-full flex">
         <img
@@ -91,9 +93,9 @@ const Moviedetails = () => {
           <h1 className="text-2xl font-semibold italic text-zinc-200">{info.detail.tagline}</h1>
 
           <h1 className="text-2xl text-white mb-3 mt-5">Overview</h1>
-          <p className="text-xl text-white italic">{info.detail.overview}</p>
+          <p className="mb-[5%]  text-xl text-white italic">{info.detail.overview}</p>
 
-          <Link to={`${pathname}/trailer`}>Play Trailer</Link>
+          <Link className="p-5 bg-[#6556CD] rounded-md " to={`${pathname}/trailer`}><i className="text-xl ri-film-line"></i> Play Trailer</Link>
         
          
         </div>
@@ -157,6 +159,12 @@ const Moviedetails = () => {
           )}
     
       </div>
+
+      {/* Part 4 */}
+   
+      <h1 className="mt-10 mb-5 text-3xl font-bold text-yellow-600" >   <hr className="text-white mt-10 mb-10 h-[2px] bg-zinc-500" /> Recommendatons and Similar</h1>
+      <HorizontalCards data={info.recommendations.length > 0 ? info.recommendations : info.similar} />
+    <Outlet />
     </div>
   ) : (
     <Loading />

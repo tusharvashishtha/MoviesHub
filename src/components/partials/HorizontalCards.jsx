@@ -5,8 +5,7 @@ import noImage from "/noImage.png"
 import { Link } from "react-router-dom";
 const HorizontalCards = ({ data }) => {
   var settings = {
-    dots: false, 
-    arrows: false, 
+    dots: true, 
     infinite: true,
     speed: 500,
     slidesToShow: 4,
