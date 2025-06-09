@@ -16,7 +16,8 @@ const Moviedetails = () => {
     return () => {
       dispatch(removemovie());
     };
-  }, []);
+  }, [dispatch, id]);
+
   return info ? (
     <div
       style={{
@@ -27,7 +28,7 @@ const Moviedetails = () => {
       }}
       className="w-screen h-screen px-[10%] text-xl"
     >
-      {/* {PART - 1 NAVIGATION} */}
+      {/* Navigation */}
       <nav className="h-[10vh] w-full text-zinc-300 flex items-center gap-10 ">
         <Link
           onClick={() => navigate(-1)}
@@ -35,6 +36,7 @@ const Moviedetails = () => {
         ></Link>
         <a
           target="_blank"
+          rel="noreferrer"
           className="hover:text-[#6556CD] duration-300"
           href={info.detail.homepage}
         >
@@ -42,6 +44,7 @@ const Moviedetails = () => {
         </a>
         <a
           target="_blank"
+          rel="noreferrer"
           className="hover:text-[#6556CD] duration-300"
           href={`https://www.wikidata.org/wiki/${info.externalid.wikidata_id}`}
         >
@@ -49,6 +52,7 @@ const Moviedetails = () => {
         </a>
         <a
           target="_blank"
+          rel="noreferrer"
           className="hover:text-[#6556CD] duration-300 "
           href={`https://www.imdb.com/title/${info.externalid.imdb_id}/`}
         >
@@ -56,30 +60,65 @@ const Moviedetails = () => {
         </a>
       </nav>
 
-      {/* {PART - 1 POSTER AND DETAILS} */}
+      {/* Part 2 Poster and details */}
       <div className="w-full flex">
-        <div>
-          <img
-            className="shadow-xl/30 object-cover h-[50vh]"
-            src={`https://image.tmdb.org/t/p/original/${
-              info.detail.poster_path || info.detail.backdrop_path
-            }`}
-            alt=""
-          />
+        <img
+          className="shadow-xl/30 object-cover h-[50vh]"
+          src={`https://image.tmdb.org/t/p/original/${
+            info.detail.poster_path || info.detail.backdrop_path
+          }`}
+          alt=""
+        />
+      </div>
 
-          <div>
-            {info.watchproviders &&
-              info.watchproviders.flatrate &&
-              info.watchproviders.flatrate.map((w, i) => (
+      {/* Part 3 avilavle on  flexPlatforms */}
+      <div className="w-[80%] flex flex-col gap-y-5 mt-10">
+        {/* Flatrate Providers */}
+    
+          {info.watchproviders && info.watchproviders.flatrate && (
+            <div className="flex gap-x-10 items-center text-white">
+              <h1>Available on Platforms</h1>
+              {info.watchproviders.flatrate.map((w, i) => (
                 <img
+                title={w.provider_name}
                   key={i}
-                  className="w[7h] rounded-md"
+                  className="w-[5vh] rounded-md object-cover"
                   src={`https://image.tmdb.org/t/p/original/${w.logo_path}`}
                   alt=""
                 />
               ))}
-          </div>
-        </div>
+            </div> 
+          )}
+
+          {info.watchproviders && info.watchproviders.rent && (
+            <div className="flex gap-x-10 items-center text-white">
+              <h1>Available on Rent</h1>
+              {info.watchproviders.rent.map((w, i) => (
+                <img
+                title={w.provider_name}
+                  key={i}
+                  className="w-[5vh] rounded-md object-cover"
+                  src={`https://image.tmdb.org/t/p/original/${w.logo_path}`}
+                  alt=""
+                />
+              ))}
+            </div>
+          )}
+          {info.watchproviders && info.watchproviders.buy && (
+            <div className="flex gap-x-10 items-center text-white">
+              <h1>Available to Buy</h1>
+              {info.watchproviders.buy.map((w, i) => (
+                <img
+                  title={w.provider_name}
+                  key={i}
+                  className="w-[5vh] rounded-md object-cover"
+                  src={`https://image.tmdb.org/t/p/original/${w.logo_path}`}
+                  alt=""
+                />
+              ))}
+            </div>
+          )}
+    
       </div>
     </div>
   ) : (
