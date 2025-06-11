@@ -163,7 +163,7 @@ const Moviedetails = () => {
       {/* Part 4 */}
    
       <h1 className="mt-10 mb-5 text-3xl font-bold text-yellow-600" >   <hr className="text-white mt-10 mb-10 h-[2px] bg-zinc-500" /> Recommendatons and Similar</h1>
-      <HorizontalCards data={info.recommendations.length > 0 ? info.recommendations : info.similar} />
+      <HorizontalCards data={info.recommendations.length > 0 ? info.recommendations : info.similar} /> 
     <Outlet />
     </div>
   ) : (

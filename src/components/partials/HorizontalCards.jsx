@@ -5,8 +5,11 @@ import noImage from "/noImage.png"
 import { Link } from "react-router-dom";
 const HorizontalCards = ({ data }) => {
   var settings = {
-    dots: true, 
+    dots: false, 
     infinite: true,
+    autoplay: true,
+    speed: 5000,
+    autoplaySpeed: 5000,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 4,
@@ -39,7 +42,7 @@ const HorizontalCards = ({ data }) => {
   return (
       
       <Slider {...settings} className="">
-        {data.map((d, i) => (
+        {data.length > 0 ? data.map((d, i) => (
           <Link to = {`/${d.media_type}/details/${d.id}`} key={i} className="px-2">
             <div className="bg-zinc-900 rounded overflow-hidden shadow-lg h-[350px] flex flex-col">
               <img
@@ -58,7 +61,7 @@ const HorizontalCards = ({ data }) => {
               </div>
             </div>
           </Link>
-        ))}
+        )) : <h1 className="text-3xl text-white font-black text-center mt-5" >Nothing to Show</h1> }
       </Slider>
 
   );
