@@ -5,6 +5,7 @@ import {asyncloadperson , removepeople} from '../store/actions/PersonActions'
 import { Link } from "react-router-dom";
 import Loading from "../components/Loading";
 import HorizontalCards from "../components/partials/HorizontalCards"
+import DummyHorizontalCards from "./partials/DummyHorizontalCards";
 
 function PersonDetails() {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ function PersonDetails() {
   }, [dispatch, id]);
 
   return info ? (
-    <div className="px-[15%] w-screen h-screen flex flex-col">
+    <div className="px-[10%] w-screen h-[125vh] flex flex-col">
        {/*Part 1 Navigation */}
             <nav className="h-[10vh] w-full text-zinc-300 flex items-center gap-10 ">
               <Link
@@ -30,7 +31,7 @@ function PersonDetails() {
               ></Link>
             </nav>
 
-              <div className="w-full flex flex-col">
+              <div className="w-full flex ">
               {/* Part 2 left poster and details */}
               <div className="w-[20%]">
                 <img
@@ -41,7 +42,7 @@ function PersonDetails() {
           alt=""
         />
         <hr className="text-white mt-10 mb-5 h-[2px] bg-zinc-500" /> 
-         </div>
+         
 
          {/* social media links */}
         <div className="text-white text-2xl flex gap-x-5">
@@ -59,7 +60,7 @@ function PersonDetails() {
                 className="hover:text-[#6556CD] duration-300 "
                 href={`https://www.facebook.com/${info.externalid.facebook_id}`}
               >
-               <i class="ri-facebook-circle-fill"></i>
+               <i className="ri-facebook-circle-fill"></i>
               </a>
               <a
                 target="_blank"
@@ -67,7 +68,7 @@ function PersonDetails() {
                 className="hover:text-[#6556CD] duration-300 "
                 href={`https://www.instagram.com//${info.externalid.instagram_id}`}
               >
-               <i class="ri-instagram-fill"></i>
+               <i className="ri-instagram-fill"></i>
               </a>
               <a
                 target="_blank"
@@ -75,14 +76,40 @@ function PersonDetails() {
                 className="hover:text-[#6556CD] duration-300 "
                 href={`https://x.com/${info.externalid.twitter_id}`}
               >
-               <i class="ri-twitter-x-fill"></i>
+               <i className="ri-twitter-x-fill"></i>
               </a>
        
               </div>
+              {/* personal information */}
+              <h1 className="text-2xl text-zinc-400 font-semibold my-3">Info</h1>
 
+              {/* <h1 className="text-lg text-zinc-400 font-semibold ">Known For</h1> */}
+              <h1 className="text-2xl text-zinc-400 font-semibold mt-3">Known For</h1>
+              <h1 className=" text-yellow-600 ">{info.detail.known_for_department}</h1>
+
+              <h1 className="text-2xl text-zinc-400 font-semibold mt-3">Gender</h1>
+              <h1 className=" text-yellow-600 ">{info.detail.gender === 2 ? "Male" : "Female"}</h1>
+
+              <h1 className="text-2xl text-zinc-400 font-semibold mt-3">Birth Date</h1>
+              <h1 className=" text-yellow-600 ">{info.detail.birthday}</h1>
+
+              <h1 className="text-2xl text-zinc-400 font-semibold mt-3">Place Of Birth</h1>
+              <h1 className=" text-yellow-600 ">{info.detail.place_of_birth}</h1>
+          </div>
+ 
               {/* part 3 details and info */}
-              <div className="w-[80%]">
+              <div className="w-[80%] ml-[5%]">
+                <h1 className="text-6xl text-zinc-400 font-black my-3">{info.detail.name}</h1>
 
+              {/* <h1 className="text-lg text-zinc-400 font-semibold ">Known For</h1> */}
+              <h1 className="text-xl text-yellow-600 font-semibold mt-3">Biography</h1>
+              <p className="text-zinc-400 mt-3">{info.detail.biography}</p>
+              
+              <h1 className="text-lg text-yellow-600 font-semibold mt-5 mb-3">
+                Work
+              </h1>
+              <DummyHorizontalCards data={info.combinedCredits.cast} />
+      
               </div>
 
         </div>
