@@ -64,38 +64,38 @@ const Moviedetails = () => {
 
 
       {/* Part 2 Poster and details */}
-      <div className="w-full flex">
+      <div className="w-full flex flex-col md:flex-row">
         <img
-          className="shadow-xl/30 object-cover h-[50vh]"
+          className="shadow-xl/30 object-cover md:h-[50vh]"
           src={`https://image.tmdb.org/t/p/original/${
             info.detail.poster_path || info.detail.backdrop_path
           }`}
           alt=""
         />
 
-        <div className="content ml-[5%]">
-          <h1 className="text-5xl font-black text-white">{info.detail.name ||info.detail.original_name  || info.detail.title ||info.detail.original_title}
+        <div className="content mt-10 md:mt-0 ml-[5%]">
+          <h1 className="md:text-5xl text-2xl  font-black text-white">{info.detail.name ||info.detail.original_name  || info.detail.title ||info.detail.original_title}
           <small className="text-2xl font-bold text-zinc-300">
             ({info.detail.release_date.split("-")[0]})
           </small>
 
           </h1>
 
-          <div className="mt-3 mb-3 flex text-white items-center gap-x-5 ">
-           <span className='bg-yellow-600  text-white font-semibold w-[9vh] h-[4vh] flex justify-center items-center'><i className="mr-[1vh] ri-star-fill"></i>{((info.detail.vote_average * 10).toFixed())/10}
+          <div className="mt-3 mb-3 flex flex-col md:flex-row text-white items-center gap-x-5 ">
+           <span className='bg-yellow-600 mt-5  text-white font-semibold w-[9vh] h-[4vh] flex justify-center items-center'><i className="mr-[1vh] ri-star-fill"></i>{((info.detail.vote_average * 10).toFixed())/10}
            </span>
-           <h1 className="font-semibold w-[70px] text-2xl leading-7">Ratings</h1>
-           <h1>{info.detail.release_date}</h1>
-           <h1>{info.detail.genres.map((g) => g.name).join(' , ')}</h1>
-           <h1>{info.detail.runtime}min</h1>
+           <h1 className="font mt-3 semibold w-[70px] text-2xl leading-7">Ratings</h1>
+           <h1 className="mt-3">{info.detail.release_date}</h1>
+           <h1 className="mt-3">{info.detail.genres.map((g) => g.name).join(' , ')}</h1>
+           <h1 className="mt-3">{info.detail.runtime}min</h1>
           </div>
 
           <h1 className="text-2xl font-semibold italic text-zinc-200">{info.detail.tagline}</h1>
 
           <h1 className="text-2xl text-white mb-3 mt-5">Overview</h1>
-          <p className="mb-[5%]  text-xl text-white italic">{info.detail.overview}</p>
+          <p className="mb-[15%] md:mb-[5%]  text-xl text-white italic">{info.detail.overview}</p>
 
-          <Link className="p-5 bg-[#6556CD] rounded-md " to={`${pathname}/trailer`}><i className="text-xl ri-film-line"></i> Play Trailer</Link>
+          <Link className="p-5 bg-[#6556CD] m-10 md:m-0 rounded-md " to={`${pathname}/trailer`}><i className="text-xl ri-film-line"></i>Play Trailer</Link>
         
          
         </div>
@@ -106,7 +106,7 @@ const Moviedetails = () => {
         {/* Flatrate Providers */}
     
           {info.watchproviders && info.watchproviders.flatrate && (
-            <div className="flex gap-x-10 items-center text-white">
+            <div className="flex flex-col md-flex-row gap-x-10 items-center text-white">
               <div className=" w-[55%]">
               <h1>Available on Platforms</h1>
               </div>

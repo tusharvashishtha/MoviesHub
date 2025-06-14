@@ -45,7 +45,7 @@ const Home = () => {
     <Topnav />
     <Header data = {wallpaper} />
 
-    <div className="flex justify-between items-center p-5">
+    <div className="flex justify-between items-center ">
       <h1 className="text-xl font-semibold text-zinc-200">Trending</h1>
       <Dropdown title="All " options={["tv", "movie","all"]} func = {(e) => setcategory(e.target.value)} />
     </div>
