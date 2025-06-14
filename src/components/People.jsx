@@ -69,6 +69,7 @@ const People = () => {
          loader={<h1>Loading...</h1>}
          >
         <Cards data={person} title = "person" />
+        {console.log(person)}
         </InfiniteScroll>
 
 

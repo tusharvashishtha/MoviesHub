@@ -182,4 +182,4 @@ const TvDetails = () => {
   );
 }
 
-export default TvDetails
+export default TvDetails;
