@@ -9,7 +9,6 @@ const HorizontalCards = ({ data }) => {
     autoplay: true,
     speed: 5000,
     autoplaySpeed: 5000,
-    speed: 500,
     slidesToShow: 4,
     slidesToScroll: 4,
     responsive: [
