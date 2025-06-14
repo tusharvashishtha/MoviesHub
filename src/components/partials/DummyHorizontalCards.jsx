@@ -2,8 +2,9 @@ import Slider from "react-slick";
 import Dropdown from "./Dropdown";
 import noImage from "/noImage.png"
 import { Link } from "react-router-dom";
-const HorizontalCards = ({ data }) => {
-  var settings = {
+
+function DummyHorizontalCards({ data }) {
+    var settings = {
     dots: false, 
     infinite: true,
     autoplay: true,
@@ -37,12 +38,10 @@ const HorizontalCards = ({ data }) => {
       }
     ]
   };
-
   return (
-      
-      <Slider {...settings} className="">
+     <Slider {...settings} className="">
         {data.length > 0 ? data.map((d, i) => (
-          <Link to = {`/${d.media_type}/details/${d.id}`} key={i} 
+          <div key={i} 
           className="px-2">
         
             <div className="bg-zinc-900 rounded overflow-hidden shadow-lg h-[350px] flex flex-col">
@@ -61,11 +60,10 @@ const HorizontalCards = ({ data }) => {
                 </p>
               </div>
             </div>
-          </Link>
+          </div>
         )) : <h1 className="text-3xl text-white font-black text-center mt-5" >Nothing to Show</h1> }
       </Slider>
+  )
+}
 
-  );
-};
-
-export default HorizontalCards;
+export default DummyHorizontalCards

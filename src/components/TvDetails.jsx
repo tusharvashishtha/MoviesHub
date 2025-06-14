@@ -4,7 +4,8 @@ import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 import { asyncloadtv, removetv } from "../store/actions/TvActions";
 import { Link } from "react-router-dom";
 import Loading from "../components/Loading";
-import HorizontalCards from "../components/partials/HorizontalCards"
+import HorizontalCards from "../components/partials/HorizontalCards";
+import DummyHorizontalCards from "./partials/DummyHorizontalCards";
 
 const TvDetails = () => {
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ const TvDetails = () => {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
       }}
-      className="w-screen h-[150vh] overflow-x-hidden px-[10%] text-xl"
+      className="w-screen h-[180vh] overflow-x-hidden px-[10%] text-xl"
     >
       {/*Part 1 Navigation */}
       <nav className="h-[10vh] w-full text-zinc-300 flex items-center gap-10 ">
@@ -162,9 +163,13 @@ const TvDetails = () => {
 
        {/* Part 4 Seasons */}
        {console.log(info)}
-   
-      <h1 className="mt-10 mb-5 text-3xl font-bold text-yellow-600" >   <hr className="text-white mt-10 mb-10 h-[2px] bg-zinc-500" /> Seasons</h1>
-      <HorizontalCards data={info.detail.seasons.length > 0 ? info.detail.seasons : info.similar} /> 
+      {info.detail.seasons.length > 0 && (<>
+      <h1 className="mt-10 mb-5 text-3xl font-bold text-yellow-600" > 
+        <hr className="text-white mt-10 mb-10 h-[2px] bg-zinc-500" /> Seasons</h1>
+      <DummyHorizontalCards data={info.detail.seasons} /> 
+      </>)
+          }
+      
 
       {/* Part 5 */}
    
