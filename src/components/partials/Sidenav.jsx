@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 
 const Sidenav = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 1000);
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 768); // md = 768px
 
   useEffect(() => {
     const handleResize = () => {
-      setIsLargeScreen(window.innerWidth >= 1000);
-      if (window.innerWidth >= 1000) {
+      setIsLargeScreen(window.innerWidth >= 768);
+      if (window.innerWidth >= 768) {
         setIsOpen(false);
       }
     };
@@ -18,7 +18,7 @@ const Sidenav = () => {
   }, []);
 
   return (
-    <>
+    <div className="relative md:w-[20%] z-40">
       {!isLargeScreen && (
         <button 
           className="fixed top-4 left-4 z-50 text-white text-3xl"
@@ -28,11 +28,11 @@ const Sidenav = () => {
         </button>
       )}
 
-      <div className={`fixed top-0 left-0 h-full bg-[#1F1E24] border-r-2 border-zinc-400 p-10 z-40 transition-transform duration-300 ease-in-out 
-        w-[70%] sm:w-[50%] lg:w-[20%] 
-        ${isOpen || isLargeScreen ? "translate-x-0" : "-translate-x-full"} 
-        ${isLargeScreen ? "static block" : ""}`}
-      >
+      <div className={`
+        ${isLargeScreen ? "static block md:w-full" : "fixed top-0 left-0 w-[70%] sm:w-[50%] h-full z-40 transition-transform duration-300 ease-in-out"}
+        ${isOpen || isLargeScreen ? "translate-x-0" : "-translate-x-full"}
+        bg-[#1F1E24] border-r-2 border-zinc-400 p-10
+      `}>
         <h1 className='text-xl text-white font-bold mb-10'>
           <i className="ri-tv-fill text-[#6556CD] text-2xl mr-3"></i>
           <span className='text-xl'>MoviesHub</span>
@@ -62,7 +62,7 @@ const Sidenav = () => {
           onClick={() => setIsOpen(false)}
         />
       )}
-    </>
+    </div>
   );
 };
 
