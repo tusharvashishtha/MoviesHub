@@ -22,7 +22,7 @@ function PersonDetails() {
   }, [dispatch, id]);
 
   return info ? (
-    <div className="px-[10%] w-screen h-[125vh] flex flex-col">
+    <div className="px-[10%] w-[100vw] min-h-screen bg-[#1F1E24] flex flex-col">
        {/*Part 1 Navigation */}
             <nav className="h-[10vh] w-full text-zinc-300 flex items-center gap-10 ">
               <Link
@@ -31,11 +31,11 @@ function PersonDetails() {
               ></Link>
             </nav>
 
-              <div className="w-full flex ">
+              <div className="w-full flex flex-col md:flex-row items-center ">
               {/* Part 2 left poster and details */}
-              <div className="w-[20%]">
+              <div className="md:w-[20%] w-[80%]">
                 <img
-          className="shadow-xl/30 object-cover w-[100%] h-[40vh]"
+          className="shadow-xl/30 object-cover w-[100%] h-[60vh] md:h-[40vh]"
           src={`https://image.tmdb.org/t/p/original/${
             info.detail.profile_path
           }`}

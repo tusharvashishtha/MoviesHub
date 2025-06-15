@@ -96,14 +96,14 @@ const Moviedetails = () => {
           <h1 className="text-2xl text-white mb-3 mt-5">Overview</h1>
           <p className="mb-[15%] md:mb-[5%]  text-xl text-white italic">{info.detail.overview}</p>
 
-          <Link className="p-5 bg-[#6556CD] m-10 md:m-0 rounded-md " to={`${pathname}/trailer`}><i className="text-xl ri-film-line"></i>Play Trailer</Link>
+          <Link className="p-5 bg-[#6556CD] m-10 md:m-0 rounded-md" to={`${pathname}/trailer`}><i className="text-xl ri-film-line"></i>Play Trailer</Link>
         
          
         </div>
       </div>
 
       {/* Part 3 avilavle on  flexPlatforms */}
-      <div className="w-[30%]  flex flex-col justify-between gap-y-5 mt-10">
+      <div className="w-[30%] flex flex-col justify-between gap-y-5 mt-10">
         {/* Flatrate Providers */}
     
           {info.watchproviders && info.watchproviders.flatrate && (
