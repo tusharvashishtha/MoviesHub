@@ -20,6 +20,7 @@ const Moviedetails = () => {
     };
   }, [dispatch, id]);
 
+
   return info ? (
     <div
       style={{

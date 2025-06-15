@@ -11,7 +11,8 @@ const Home = () => {
     document.title = 'Home'
     const [wallpaper, setWallpaper] = useState(null);
     const [trending, setTrending] = useState(null);
-    const [category, setcategory] = useState("all")
+    const [category, setcategory] = useState("all");
+    
 
     const getHeaderWallpaper = async() =>{
       try {
@@ -44,9 +45,8 @@ const Home = () => {
     <div className="w-[100%] md:w-[80%] h-full overflow-auto overflow-x-hidden">
     <Topnav />
     <Header data = {wallpaper} />
-
     <div className="flex justify-between items-center ">
-      <h1 className="text-xl font-semibold text-zinc-200">Trending</h1>
+      <h1 className="text-xl ml-3 font-semibold text-yellow-600">Trending</h1>
       <Dropdown title="All " options={["tv", "movie","all"]} func = {(e) => setcategory(e.target.value)} />
     </div>
 

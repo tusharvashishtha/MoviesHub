@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import noImage from "/noImage.png"
 
 const Cards = ({data , title}) => {
+
   return (
     <div className='flex flex-wrap justify-around w-ful h-full px-[3%] bg-[#1F1E24]'>
         {data.map((c,i) =>( 
