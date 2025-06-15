@@ -1,11 +1,11 @@
 import axios from "axios";
 
 const instance = axios.create({
-    baseURL: "https://api.themoviedb.org/3/",
-    headers: {
+  baseURL: "https://api.themoviedb.org/3/",
+  headers: {
     accept: 'application/json',
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlNmVlMjZkZTgzMTgwYjZiMmJkYTVmMzBkZGJmMWIzZCIsIm5iZiI6MTc0ODMyMjcwOS45MjgsInN1YiI6IjY4MzU0OTk1ZGM3NGJiYTFhNjAzNzkyOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.XPTfghgExyJqG10JGPUA2ZD9cU2pmSGG2LO-56Hb3WM'
+    Authorization: `Bearer ${import.meta.env.VITE_TMDB_API_TOKEN}`
   }
-})
+});
 
 export default instance;
